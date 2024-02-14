@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Basic commands.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%22hallo-homie-hope-you-be-pretty-good-and-keep-yourself-as-i-left-you%22"><strong>&quot;Hallo homie, hope you be pretty good and keep yourself as I left you.&quot;</strong></h1>
+<h2 id="topics">Topics</h2>
+<ul>
+<li><a href="#hallo-homie-hope-you-be-pretty-good-and-keep-yourself-as-i-left-you"><strong>&quot;Hallo homie, hope you be pretty good and keep yourself as I left you.&quot;</strong></a>
+<ul>
+<li><a href="#topics">Topics</a>
+<ul>
+<li><a href="#important-websites">Important websites</a></li>
+<li><a href="#important-notes">Important Notes</a></li>
+<li><a href="#commands--functions">Commands &amp; Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="important-websites">Important websites</h3>
+<ol>
+<li><a href="https://www.mockaroo.com/">Mockaroo</a></li>
+<li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+</ol>
+<h3 id="important-notes">Important Notes</h3>
+<ul>
+<li><code>help</code> can be used only when <code>=</code> exist</li>
+<li>THE DIFFRENCE BETTWENN   <code>=</code> &amp; <code>-</code>     <code>\</code> &amp; <code>/</code> just you can imagin the commands in the boxes or groups there is a key to open the whole box <code>\</code> &amp; <code>=</code> and there is a different one which open the smaller one <code>/</code> &amp; <code>-</code> ,if you want to exit from one group press <code>;</code><details><summary> <strong>Foto</strong> </summary><img src="Pictures/1.PNG" alt="alt text"></details></li>
+<li><code>COUNT(*)</code> is a fun from aggeregation funcations there is alot of them you can vist this site to know more <a href="https://www.postgresql.org/docs/11/functions-aggregate.html">postgres</a> in this like you may face this fun like  <code>max() , min(), avr(), round</code> note aggregate function calls can't be nested</li>
+<li>you have only one <code>ELSE </code> and <code>END</code> per <code>CASE</code> but  multi <code>WHEN</code></li>
+<li>If you want to delete a row in sub-table you must at first delete any record has this foregin key this will be done by 3 ways the first is to delete the record ,second is to update these columns by NULL value third is to make cascade method but this is a bad practice because it will delete every record that has this foregin key</li>
+<li>A nice trick when the foregin key and primary key has the same name it is better to use <code>USING </code></li>
+<li><strong>EXTENSIONS</strong> to know what is the new funcation that has been added press \df we used uuid instead of orignial id with only integar number because it so difficult to attackers to guess the exact id and it is possible to migrate two database without any clashes because all id is different not like just integers 1,2,3,4,5 <details><summary><strong>Foto</strong></summary> <img src="Pictures/29.PNG" alt="alt text"><img src="Pictures/30.PNG" alt="alt text"> </details></li>
+<li>to export your table to a CSV file you type <details><summary><strong>Foto</strong></summary><img src="Pictures/31.PNG" alt="alt text"></details></li>
+<li>to know what is the last id you have or the last variable that type is bigserial is you can this doing by or if you want to increment these bigserial just use the entire funcation under default after SELECT<details><summary><strong>Foto</strong></summary><img src="Pictures/32.PNG" alt="alt text"></details></li>
+</ul>
+<h3 id="commands--functions">Commands &amp; Functions</h3>
+<ul>
+<li>
+<p><code>\!</code> CLS** TO CLEAR SCREEN</p>
+</li>
+<li>
+<p><code>\c</code> to connect to another database you can connect to specific things not all database use commands below ,but <code>\c</code> is easy and common<details><summary><strong>Foto</strong></summary><img src="Pictures/2.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p><code>CREATE DATABASE</code> &quot;NAME&quot; &amp; <code>DROP DATABASE</code> &quot;NAME&quot; create and remove whole database just like <code>DELETE FROM</code> &quot;NAME&quot; but this delete only table or column if you specific this <details> <summary> <strong>Foto</strong> </summary> <img src="Pictures/3.PNG" alt="alt text"> </details></p>
+</li>
+<li>
+<p>CREATE TABLE <em><strong>men</strong></em> to create table  in my database <strong>person</strong>  but first must be connect to this database , you have to know the <a href="https://www.postgresql.org/docs/current/datatype.html">data types</a>  \dt show details about tables in your current database <details><summary><strong>Foto</strong></summary><img src="Pictures/4.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p>to insert new record use  enter the data between ' '  note that if you enter date you must enter DATE '2002-03-30'<details><summary><strong>Foto</strong></summary><img src="Pictures/5.PNG" alt="alt text"></details>
+to insert multi records use <code>\i</code> command and put the path of your SQL file note that <code>/</code> in your path not <code>\</code>if you want any date visit Mockaroo <details><summary><strong>Foto</strong></summary><img src="Pictures/7.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p>To Read from tables use <code>SELECT</code><details><summary><strong>Foto</strong></summary> <img src="Pictures/6.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p>to sort cloums use <code>ORDER BY</code> with <code>DESC</code> or <code>ASC</code> (however ASC is the defult) , this command is the last command we write <details><summary><strong>Foto</strong></summary><img src="Pictures/8.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p>to remove duplicateied date and to only know what is the unique date that we have and how many use<code> DISTINCT</code><details><summary><strong>Foto</strong></summary><img src="Pictures/9.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p>you can also add conditions by using <code>WHERE</code> keyword you can inaddtion use <code>AND</code>  <code>OR</code> to have specific condition ,you have a compersion operator like <code>&lt; ,&gt;, =,&lt;&gt; ,&lt;=,&gt;= </code>and it will return t or f or return the query that provides these conditions<details><summary><strong>Foto</strong></summary><img src="Pictures/10.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p>to get range of some number you can use <code>BETWEEN</code> that have the same functionalty<details><summary><strong>Foto</strong></summary><img src="Pictures/11.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p>you can know how many this data apper or duplictied by using <code>GROP BY</code> key word but you should use also <code>COUNT()</code> <details><summary><strong>Foto</strong></summary><img src="Pictures/12.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p>to make any condtions on grop we use <code>HAVING</code> and put the condition in <code>COUNT(*)</code><details><summary><strong>Foto</strong></summary><img src="Pictures/13.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p>there is a fun to bring data -used with <code>WHERE</code> -that is like to what you looking for is called <code>LIKE</code> or <code>ILIKE</code> there are not pretty diffrenet between them only <code>ILIKE</code> is not case senstive... yoy can add a ounch if underscores to indicate how many letters you want to be found only in your query<details><summary><strong>Foto</strong></summary><img src="Pictures/14.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p><code>AS</code> key word change the name of the column that you have added or any variable or long name you have to makr it easy to operate with them and we write it at the end of name of any column<details><summary><strong>Foto</strong></summary><img src="Pictures/14.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p><code>COALESCE</code> key word used to fill null values with a specific character ,<strong>Note that</strong> don't forget <code>' '</code><details><summary><strong>Foto</strong></summary><img src="Pictures/16.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p><code>NULLIF</code> key word used to cheak if the two passing numbers are equl so it returns <code>NULL</code> or return the very first value it is good way to handel divide by zero insted of get error message you get null or zero if you use <code>COALESCE</code> <details><summary><strong>Foto</strong></summary><img src="Pictures/17.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p><code>NOW()</code> function return an actual date with time and time zone if you want a piece of it just type <code>::</code> , if you want a specific part you can use <code>EXTRACT</code><details><summary><strong>Foto</strong></summary><img src="Pictures/18.PNG" alt="alt text"></details> , if you want to add or substract date from each other use <code>INTERVAL ' '</code>and you can write any time between partices 1 YEAR, 6 MONTH ,10 DAY , there is also a special fun from <code>INTERVAL</code> called <code>AGE('ending','starting')</code> <details><summary><strong>Foto</strong></summary><img src="Pictures/19.PNG" alt="INTERVAL"> <img src="Pictures/20.PNG" alt="AGE"></details></p>
+</li>
+<li>
+<p>if you want to add a <code>PRIMARY KEY</code> constraint[for rows] or <code>UNiQUE</code> constraint [for column] use <code>ALTER TABLE</code> <details><summary><strong>Foto</strong></summary><img src="Pictures/21.PNG" alt="alt text"></details> to remove any of them use <code>ALTER TABLE 'name' DROP</code> <details><summary><strong>Foto</strong></summary><img src="Pictures/22.PNG" alt="alt text"></details>
+<code>CHECK(condition)</code> that can be drive to table by the same way to declear any constraint it used to put a specific constraint depends on the condition--- to remove a specific rows use <code>DELETE FROM men WHERE </code>to remove all table use  <code>DROP TABLE men ;</code>or<code>DELETE FROM men ;</code> <details><summary><strong>Foto</strong></summary><img src="Pictures/23.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p><code>CASE</code> keyword is the correspondent(equivalent) of <code>IF</code> in the another langauage However PostgreSQL has its <code>IF</code> conditions too it only return <code>0</code> or<code> 1</code><details><summary><strong>Foto</strong></summary><img src="Pictures/24.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p><code>UPDATE</code>to update(edit or add) a column or more in one record or more depend on <code>WHERE</code> Clause record <details><summary><strong>Foto</strong></summary><img src="Pictures/25.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p>to handel duplicate key conflict which comes throw because of constraints by using
+<code>ON CONFLICT</code> ( name of any column has a constraint either primray key or unique constraint) <code>DO NOTHING</code>this is useful when database catch a conflict it will continue and go on it will only do nothing ,, but if you want to udpate some date or client enter two diffrent data you must pick up throw lastest one so you want to do UPDATE this is allowed using this <code>ON CONFLICT (id) DO UPDATE SET email= EXCLUDED.email;</code><strong>NOTE that</strong> the first <code>email</code> referece to the <code>email</code> which stored and <code>.email</code> referece to <code>email</code> that just pass or want to insert you can add  columns as you want to change but remmber to change it first when you insert these using <code>INSERT</code> <details><summary><strong>Foto</strong></summary><img src="Pictures/26.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p><strong>Relation</strong> between tables in postgreSQL it will be by using Foreign key it is a primary key that refrece to another primary key in another table and be wrriten in table details when be created in the first time or be added  like that<code>car_id BIGINT REFERENCES car(id), UNIQUE (car_id) ;</code>which <code>id</code> referece to <code>id</code> in another table and <code>car_id</code> referece to th actual table the most important thing you must write sub-tables in the first then write the main one which has a relations with them <details><summary><strong>Foto</strong></summary><img src="Pictures/27.PNG" alt="alt text"></details></p>
+</li>
+<li>
+<p><strong>inner joins</strong>* we can grab data from table and its relations by using <code>JOIN</code> like that ,after JOIN we write what is the point or column that makes relation between these table ,,, write it like Objects</p>
+</li>
+<li>
+<p><code>LEFT JOIN</code> is like <code>JOIN</code> but in <code>JOIN</code> it discards the data that has NULL value in the relation column or the foregin key however <code>LEFT JOIN</code> grab all data in the main table with the intersections too ,like <code>JOIN </code>.<details><summary><strong>Foto</strong></summary><img src="Pictures/28.PNG" alt="alt text"></details></p>
+</li>
+</ul>
+
+</body>
+</html>
