@@ -1,15 +1,15 @@
-reap benefits
-lack of consistency
-monitoring
-Rapidly provision your database without need an admin
-the experience te agility to deploy as needed 
-the portability to run postgres everywhere 
-trivial
-parentheses
-evolved immensely
-conjunction
-possess 
-enforces 
-violates 
-tackle
-demonstrate
+reap benefits   	gather
+lack of consistency  	things that are out of keeping with each other
+monitoring     		observing 
+Rapidly provision 	Provide something fast 
+agility 		The power to move quickly an easily ;nimbleness
+portability		transferability
+trivial			insignificant
+parentheses		()
+evolved immensely 	something that has changed over time and to a great extent
+conjunction		connecting between two things or more 
+possess 		to have and hold as [property](item you have)
+enforces 		to put or keep in force
+violates 		to break or act against something such as a law
+tackle			to face or to attack or to deal with something
+demonstrate		prove or to make evident or establish by arguments or reasoning ;prove
