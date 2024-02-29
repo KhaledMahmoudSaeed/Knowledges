@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="our very first website ">
+		<meta name="author" content="Khaled">
+		<meta name="keywords" content="games  , html, exercieses,fun">
+		<meta name="viewport" content="width=device-width , initial-scale=1.0">
+	  	<title>  deutscher </title>
+	</head>
+	<body style ="background-color: peru ">
+		<h1>wilkommen welt</h1>
+		<hr/>
+		<br/>
+
+
+		<!-- nothing here hoooowooooow .. note that every br ot hr make one line if want more just
+		type bunch of them either in seprate lines or in the same line !-->
+
+		<br/>
+		<hr/>
+		<p> <big>Hallo mein freunde</big> , <b>Ich<b> bin zu <i>stolz</i> mein <b><i>webseite</i></b> ihnen zu erstehlen </p>
+		<hr/>
+		<p style="color: brown;background-color: aqua"> <small> hoffe Ich ,Ihnen machen keine sorgen<small>...<b><big>los geht's</big></b> 1, <sub>2</sub> , 3 ,<sup>4</sup> </p>
+
+		<p style="color:white ;background-color:black"> <b><big> Now I will show you something pretty important </big></b> </p>
+		<header>
+			this is a sub header for my article usually I put hear a head or navigation link
+			<nav>
+			<a href="https://www.youtube.com/watch?v=pQN-pnXPaVg&t=357s">HTML_Tutorial_video</a> <br/>
+			<a href="https://www.w3schools.com/css/css_colors.asp">CSS_Colors</a><br/>
+			<a href="HTML English words.txt">English file</a> <br/>
+			<a href="HTML English words.txt" target="_blank">English file anthor site</a><br/>
+			<a href="Test/1.png" target="_blank">Anthor directory </a>
+		</nav><!-- <a herf=...... >**** </a> this is the gernal form  !-->
+		</header>
+			<img width="150" src="Test/1.png"/>
+			<img width="150" src="Test/2.png"  alt="there was a pretty pictuer"/> <!-- alt display a sentence when html can't get this picture so that was a really powerful propertiey!-->
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/pQN-pnXPaVg?si=X2oZHfxVmCQThBUc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br/>
+			<video src="Test/1.mp4" poster="https://tr.rbxcdn.com/5087cd04a0ddd0208b4d3aabd558afa2/768/432/Image/Png" controls width="400" ></video>
+	
+	<main>
+		<article style="background-color:magenta">
+		 <h2> here write the article title like <b>How to Live</b> </h2>
+		 <hr/>
+		 	<section style ="background-color : midnightblue">
+			  <h3> this is my first section </h3>
+			  <a href="https://www.w3schools.com/tags/tag_input.asp">inputs tag</a><br/>
+				<form>
+				<input name="in" type="text"/>
+				<input type="password"/>
+				<input type="date" />
+				<input type="text" value="enter name" />
+				</form>
+				<a href="https://www.w3schools.com/tags/tag_input.asp">inputs tag</a>
+				<!-- you can specifi how many rows or cols the area has !--><textarea>
+				enter paragraph
+			  </textarea>
+			</section>
+			<section>
+				<p>here i can write every thing about speicifi subject </p>
+				<hr/>
+				<ul>
+					<li> engineerings </li>
+					<li> peole </li>
+					<li> others </li>
+				</ul>
+
+				<ol>
+					<li> peole </li><li> peole </li><li> peole </li>
+				</ol>
+
+				<dl>
+					<dt>appels</dt>
+					<dd>good ones </dd>
+					<dt>meat</dt>
+					<dd>what a nice food</dd>
+					<dt>appels</dt>
+					<dd> ahh ,again </dd>
+				</dl> <br/> <br/>
+				<table>
+					<caption> Random Tabale </caption>
+					<thead>
+						<tr>
+							<th>name</th>
+							<th>age</th>
+							<th>num</th>
+						</tr>
+					</thead>
+					</tbody>
+						<tr>
+							<td>Khaled</td>
+							<td>16</td>
+							<td>2255</td>
+						</tr>
+
+						<tr>
+							<td>Mahmoud</td>
+							<td>56</td>
+							<td>1547</td>
+						</tr>
+					</body>
+				</table>
+
+				<aside style="background-color : lime">
+					<p style="color : blue"> if there any contant that may relative to my main article I will write it here or metion som links
+					<hr/>
+				</aside>
+
+			</section>
+  	</article>
+	</main>
+		<footer style="background-color:maroon">
+			<h5> there is footer of my article or actually my body </h5>
+			<p> I want to mention why I cost all this trouble for writing these all tage
+			,this because of readable , proffessionality, productivity and the most important reasone is
+			to be easier and faster catched be search engine like goole ... google search aboutsome specific things
+			or we can say <big>Tages</b> so with these tage which I have wrote I help him to find my website faster and easier
+		</footer>
+	</body>
+</html>
