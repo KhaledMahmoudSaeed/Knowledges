@@ -1,0 +1,6 @@
+HTML (Hyper text mark up language)
+when you named your text editor as index.html your browser will think this page is your home page of your website
+** when you have a tag included anthor one or more you must make indent before any child(the tage below parent tag)
+** <span> ....<div>  the diffrence is span is inline elements and div is a block elements so if you write something
+between sevral spans it will apper next to each others however div each element appers in one line or one block
+** all meta tags used to make your website easier to found by search engine  depends on name of each meta tag  

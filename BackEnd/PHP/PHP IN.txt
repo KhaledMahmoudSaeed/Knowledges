@@ -1,0 +1,89 @@
+PHP (Hypertext preprocessor) a scripting language that mainly used for web development however it can be used in AI or Mobile
+but it isn't a good choice ..... executed on a server not like HTML or CSS or javascript that means you can't easily view code of
+your site by just clicking on the site and open it by Atom or VS ..... can be hosted on any server and worked with any database
+In HTML you might want to create several pages for each person to show his data that called Static page that would be overwhelming boring
+however in PHP you can create one page and grasp up all data and informations about each person frome your database using ID or cookies etc..
+
+..........................................................................
+start/end tage in PHP is <? php                  ?>  ## it is a good practice not to wirte the end tag if PHP code is the last
+code in your IDE or you write PHP only in your IDE because it may cause problems with output buffer
+// or # single line comment........../* */   start and end comment lines
+In PHP it determins the data type for each data input or output may be you will write 10+15.5 this is a int + float input data
+but the output data will be double ..... 5+'5 lesson' it will return 10 and warning that there a string here note this is just
+warning not error ........ 4+'2'   return 6 integer
+Casting  (int) or(integer) or ( integer ) .... normal casting just you put the casting word between parentheses
+nothe that int+int=int ... int +float or double=double .... float(10.5)+float(10.5) = double(21)
+\ for escaping  used if you want compiler ignore the next character and not compile it just print it if in echo
+Nowdoc/Heredoc  it used to make escaping for huge code between them but nowdoc make full escape however heredoc make partial
+escape ,that is mean if there any variable it derive it if there any \ it execute it 
+echo <<<"hgsd"
+                              heredock there is a double quotion
+hgsf;
+
+echo <<<'hgsd'
+			      nowdock there is a single quotion
+hgsd;
+<pre> this tag print the lines as it like if you write bunch of echo lines it will be appered in several lines as you wrote 
+if you enter some escape characters it will be active within this tag
+.......................................................
+**Loosely  typed language // Reference are not pointer//compile time vs runtime**
+
+first we will learn user variables
+to declare a variable use $ then varabile name .... $username="khaled";
+to print variable echo $username ; ..... or if you want to put it next to some text use ""     echo " hallo $username ";
+note that PHP is case sensetive
+
+variabile variable it means you make your code dynamic and called a variable  by another variable 
+$a="kahled"; // first one
+$$a="Mahmoud" ;// seconde one 
+$$$a="Saeed";// third one and so on 
+how to print them there is two methods ... echo $a; ...echo $$a; ..... echo $$$a; or you can write echo $khaled;
+or the second method is echo "hall ${$a}";// that is mean second declaration $$a the {} defines a one of $but if you want to call 
+$$$$$a just write echo "hallo ${$$$$a}"; //less than number of $ in the decalartion by 1
+
+to make two variable refere to each other just put & before one of them like that $b=&$a; 
+if you change the value of a or b at any time both will be changed because refrence
+second we will learn pre_defined variable : this is some variables that is built in the language you can sereach about it 
+
+constants : to declare a constant use define("CONSTANT_NAME","CONSTANT_VALUE");..... define("DB_NAME","Lelouch"); or define("MAIN_NUMBER",4);
+it is best practice to name your constant by Upper case letters
+
+there are some pre-defined constant as vairables you can search for them and search for reserved words like break-continue-clone
+
+(identity)  +$a ...(negation) -$a  
+these two arithmetic opertators make the text as a number if all of them are actually as number not string or mixed
+but -$a make somthing extra which is getting the opposite if it is positive return the negative 
+
+comparison operators  == and != or<> compar value only however === and !== compar value and datatype (identical comparison operators)
+<=> called spaceship it is a very cool copmarison operator it return -1 if first value is smaller ,0 if equal and 1 if bigger than second value 
+ $a++ post increment...... ++$a Pre increment
+Logic Precedence it means which one if these logic operator will be executed first 
+&& has great precedence than and ...... || has great precedence than or  
+it also works with other operators like = or == or any logic operator  try type $a= 10 || false ....$a= 10 or false
+PHP logic operators are  and, &&,or,||,xor,!
+xor: if one is true but not both   (لو مختلفين يرجع واحد لو متشابهين يرجع صفر )
+
+Concatenate string : using . to merge two strings , variables, funcations and constants even a space " "with each others
+
+as you know comparison between two arrays happens in three aspects value, datatype and order if you use a normal comparison
+operator  will check only the value for all keys and their values otherwise using an identical comparison operator will check value, datatype and order
+#Note that + operator can be used between arrays make a Union array
+
+to prevent showing error massage use @ before line or place that you expect it will throw an error
+
+inserting html tags inbetween php is a optimal way to write to make sure editor will see html tages and check syntax and color ..etc
+like that
+<?php if(true) {?>
+<p>hallo world</p>
+<?php }?> 
+
+
+
+...............................................
+Built In funcations
+echo " " ...echo ' '  = print ' ' ..... print " "  there is no diffrence between all of them
+gettype() 	to know which type this data belongs to as int or string whatever  .... gettype([121,442,51]) it will return arry just like gettype(arr(121,442,51))
+var_dump()	converting to bool if the value between parentheses true it return bool(true) otherwise bool(false)
+nl2br()  	insert <br> after each line you will enter because in PHP it consider all you wrote however it in serval line as sigle line
+strtolower("") ,strtoupper(""), strlen(), str_replace("","") ,substr("", starting index,howmany character you want you can let this palce blank whenever it means from starting index to end)
+abs(),pow(num,power),sqrt(),max(),min(),round(),ceil(),floor(),
