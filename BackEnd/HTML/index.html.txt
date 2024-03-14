@@ -19,7 +19,7 @@
 
 		<br/>
 		<hr/>
-		<p> <big>Hallo mein freunde</big> , <b>Ich<b> bin zu <i>stolz</i> mein <b><i>webseite</i></b> ihnen zu erstehlen </p>
+		<p> <big>Hallo mein freunde</big> , <b>Ich<b> bin zu <i>stolz</i> mein <b><i>webseite</i></b> ihnen zu erstehlen..... <mark> Hallo </mark>    <del>delete</del </p>
 		<hr/>
 		<p style="color: brown;background-color: aqua"> <small> hoffe Ich ,Ihnen machen keine sorgen<small>...<b><big>los geht's</big></b> 1, <sub>2</sub> , 3 ,<sup>4</sup> </p>
 

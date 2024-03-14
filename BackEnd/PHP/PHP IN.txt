@@ -77,6 +77,47 @@ like that
 <p>hallo world</p>
 <?php }?> 
 
+in php you can write if statments in two way ... 
+if(){				if() : 
+}				endif;
+ternary condition(short if) used when you want to put a condition between same line or in line that will be more useful otherwise ordainry if used alone in block or line
+condition ?true:false
+in php you can write while loop in two way ... 
+if(){				while() : 
+}				endwhile;
+
+foreach($arrt as $value){ between parenthese you can print what you want form the arry that you have been mentioned and the value note that you can 
+name $value as you wish }
+if you want to deal with key and value too use foreach($arry as $key =>$value)
+
+include() .. require() both get values from external file to your currently file ,but if there an erorr in your file path it will return warning and still scripty works
+otherwise with require it will return fatal error and stop working .... include_once() it is the same as require_once() ... it mean this file only once time include this file
+if I try to call it again don't call it
+### some important names when you start creating a fun like function say(parameter /variable) and when you call it say(argument/value)
+in PHP functions always return NULL if you use it in echo error will happen this is default however you want to catch a value from your fun
+and deal with it in another palce so you must write return the your returned value
+to put default vaules for your variables in fun , just set these values in the beginningg of fun like that function say($name="no one",$num,$dad)
+if you want to print these default vaules just enter others value however it will make some errors because fun deals with parameter one by one
+so if you don't write first value and write the second one copmiler will asign that value to first parameter and so on until you found the last one
+has no value ,,to over come this problem you must write which parameter you want to asgin your values like that(num:4)
+ 
+as we learn variable variable there is a variable function too 
+by default fun works by value if you want it to change to by reference mode put & before your argeument function say(&$num)
+to force fun to exit an output with a specifi data type value initialize it in fun definition function say($num,$num) :int{}
+ 
+if you want to call a variable to use in fun but it is out of fun scope use use() keyword like that function say($num,$country) use($land){} then you can use $land in your fun
+
+Anonymous fun is a nameless fun used one time for a certian task usually used in another fun called high order like array_map
+
+echo '<pre>';
+echo array_map(function($items){ return $nums *5} , $nums) here $nums is an array has some numbers which I want to multiply them by 5
+echo '</pre>';
+to simplify  Anonymous fun we use Arrow fun look at the previous fun 
+array_map(fn($items) =>$nums*5,$nums)
+note that arrow fun dosen't want use keyword
+
+
+
 
 
 ...............................................
@@ -87,3 +128,11 @@ var_dump()	converting to bool if the value between parentheses true it return bo
 nl2br()  	insert <br> after each line you will enter because in PHP it consider all you wrote however it in serval line as sigle line
 strtolower("") ,strtoupper(""), strlen(), str_replace("","") ,substr("", starting index,howmany character you want you can let this palce blank whenever it means from starting index to end)
 abs(),pow(num,power),sqrt(),max(),min(),round(),ceil(),floor(),
+echo PHP_EOL
+fun_num_args() return # of your arguments that you will recive if you don't know how many are they exactly
+fun_get_arg(index) PHP consider recivied nums as an arry to get ant of them just enter its index
+fun_get_args()if you want the main arry use this built in fun
+###Spread(splat) Syntas   is a very useful method to deal with funs that you don't know number of arguments you will receive like that function say(...nums) return an arry of arguments
+the ... make a unpacking for your array so you can be able to deal with them as single variable
+###strln() return how many characters in your string
+###function_exists() return true or false 

@@ -1,6 +1,73 @@
 HTML (Hyper text mark up language)
+All Html elements (https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 when you named your text editor as index.html your browser will think this page is your home page of your website
-** when you have a tag included anthor one or more you must make indent before any child(the tage below parent tag)
+** when you have a tag included another one or more you must make indent before any child(the tage below parent tag)
 ** <span> ....<div>  the diffrence is span is inline elements and div is a block elements so if you write something
-between sevral spans it will apper next to each others however div each element appers in one line or one block
+between sevral spans it will apper next to each others however div each element appers in one line or one block.... span is
+also good and usefull when you want to format a speific text using CSS not a whole paragraph...... but div is the most important 
+tag that you ever see because it separate every collection of tags together so that be easy to modify them all in  one line in CSS
 ** all meta tags used to make your website easier to found by search engine  depends on name of each meta tag  
+
+**<! DOCTYPE html > is so important to your web to be rendered by browser by standered compliance so all contians can be randered
+properly not in quirkes mode
+
+** <b>bold text </b>...... <strong> Important text useful and help browser engine</strong>
+**<del>important when you want to delete something so engine cosider you as trust web and stable</del> .....<ins>a new text inserted </ins>
+** <p class=""> named each paragraph by a uniqe name to be able edited by CSS   A class name can be used by multiple HTML elements, while an id name must only be used by one HTML element within the page
+** If you want to merge two or more cells in one row in Table you can do it by using <tr colspan="2">done</tr> so here you have mereg two cells
+**HTML Entities is how to print tags or speical characters without html compile it like <p> or & etc ... every entitiy starts with & and end wth ; between  them is unique code for your entitiy
+** In HTML5 a very useful feature that replaced some of div elements that you have to write without knowing what this div referes to so we have (header,footer,section,main,artical,aside) these is Semantics elemants those
+all are normal div but with different names to be better to read ...... instead of using div as container for img and its caption can use figure for all and figcaption for the caption it is the same as div but make more sence
+** some common attributes between audio and video is (controls,muted,autoplay(doesn''t allow in google),loop ,type{from mime type website ) .... as video you can define width and height.. track which has some attributes like (src,kind,lang,lable)
+-----------
+The Form has some attribute (action {where data got from form will move(backend), method{GET(appera in url),POST(not appare in url)},
+it contians (label,input(you define its functionalty in type attribute like text..submit..password..etc), list
+
+
+
+input types attributes
+text		submit		password	email		hidden		rest	color		range(min,max,step,value(where start))		
+number(min,max,step) checkbox	radio	file	search	url 	date	month	time
+
+label has an attribute called for that link an element with its labled nameso if you just click the name you will active its field
+** it must to enable check only one choice from radio is to named all the same name
+select =>optgroup =>option
+list =>detalist=>option
+you can search in list not in select
+<q></q> qoutes but in line .....<blockquote></blockquote> blockitem
+<button></button>
+<wbr> divide a long string into some small pieces so if the size changed  it will spilts in some specific places that you determind
+(b dirctional isolation)<bdi></bdi> if you used arabic and english so use these tag to make your paragraph make senece
+<code></code>
+<pre></pre> saves all changes have done into it
+<iframe></iframe> 	upload whole website in your website
+
+##########width="100%" or height="100%"
+-------------
+Important atrributes
+required
+placeholder 	specifies a short hint that describes the expected value of an input field
+value		 attribute specifies the value of an <input> element.
+readonly	can get data but can't modfiy it
+disable		can't neither get data nor modfiy it
+autofoucs	make specific field active when enter page
+min/max		how many characters in each field
+checked		for radio ,,checbook
+multiple	many selected books by use ctrl
+selected	last selected value from selected list
+novalidate 	make it posible to submit without filling all fields
+target		open into new window	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
