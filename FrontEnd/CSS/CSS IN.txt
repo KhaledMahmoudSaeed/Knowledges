@@ -1,0 +1,133 @@
+CSS (Cascade Style Sheet)
+{} (curly braces
+
+if you want format all elements 
+selector{						p{		
+propertry: value;						color:red;	
+}							}
+if you want fromat certain element/s by thier class insted  of p use .class_name or use id (bad practice) #id
+
+to include CSS file in html you have 3 types 
+1- external file <link rel="stylesheet" href="css path">
+2-internal file <style></style>
+##those two ways have same code but one in same page with HTML and the another is outside
+3-in line (bad practice because HTML code usally is templet and hard to modify but is the strogest code that not affected by external or internal file 
+if you format all paragraghs in external file and fromat one line using in line format you will see this line is different from the rest
+## class and id called identifier................THE BEST PRACTICE TO WRITE using Camel case it is a writing way which used - to separate between each word
+..................
+background-color:(rgb(0 0 0)/#FF00FF/color-name);
+background-image:url();				background-repeat:{repeat/norepeat/repeat-x/repeat-y}
+background-attachment:{scroll/fixed}		background--position:{left left/100px 200px/50% 50%} you can change values of pos left,right,top,center,bottom
+background-size:{cover(cut)/contain(no cut)}
+...................
+padding:top right bottom left ...... if if you right one value ot will asign to all directions if you write 2 valus it will asign every opposite direction with the same value
+padding-bottom:10px to one direction
+margin:{outting padding } can value auto
+...................
+border-{color/width/style/radius}
+or summary all them(short hand) 		border:10px solid red;
+...................
+span apply padding&margin in left&right only ,,,,if there is any element under it and you increase span's size it will override the under element
+there is a useful property that change the mode it called ((display))
+display:(block/inline/inline-block/none)
+visiblity:(hidden)
+the difference between visibility:hidden and display:none is display hide block and remove its place there is no indicate that there is an element here not like visibility
+..................
+to make group of selector put all classes and seperate between them by , and put {} and write code
+><><
+we can make nesting when we call parent then his child like that  div p{} or div .speical{} or div .child .field{}
+...................
+deminsions
+min-width/max-width /width:fit-content ...min-height/max-height
+..................
+overflow:{visibile/hidden/scroll/auto}
+auto(best practice) like scroll but it propotional with size of text and div if there overflow scroll will appare otherwise no 
+overflow-x/overflow-y :hidden
+.................
+text-align:{left/right/center}
+direction:{rtl/ltr}				to make sence when read AR or ENG
+vertical-align:{top/bottom/middel} 		where text will exist repect to img
+text-decoration:none 				used to add lines or remove it but we usually used it to remove line under links	
+text-transform:{capitalize/uppercase/lowercase}
+letter-spacing:2px	word-spacing:2px
+text-indent:10px				like padding but more specific used often in codes
+line-height:1.6 or 160%	
+white-space:nowrap 				make text continue out of div box
+word-break:{normal/break-all/break-word}	make breaks in text to fit in div box 
+text-overflow:ellipsis				when you used overflow:hidden used text-overflow too to indicate that there is a hidden text here
+text-shadow:2px 2px 3px red			first you adjust h-shadow then virtical then blur ther color ... if you want more than one shadow put , and write second shadow's property
+..................
+inherit 
+very useful property in CSS used logicaly between parent and child ,it means between two elements within each others
+by default some properties will be inherited like text-align or font-size logically it must but if ypu want more than these
+properties to be inherited just write property and asign to it inherit but it must be child like that .d .cho{}
+...................
+web safe fonts 
+font-family:{familys}				it is best practice to asign more than family ,wheather ones isn't provided in this site will use another one that you except
+go to google font to find a good font familys
+font-size:num {em /rem /vm/%}			em =>time how many time will these font appare repect to parent...rem => same logic but repect to the root which is HTML tag ... vm=> most useful one which its font size respects to window
+font-style:{italic/....}
+font-variant:{small-caps}
+font-weight:bold/normal;
+cursor:{clicker/grab/move}			to change cursor shape
+.......................
+float:{left/right}				makesyour elemenets flow in page
+clear:both					uesd with empty element after float to adjust it
+calc() 						to calculate any number you want to asign to any property evern used precentage or precentage with pixel ((100% -50)/5)
+opacity:					used like alpha in background but it applies Transparency at both text and color
+.....................
+position:{relative/absoulte/static/fixed/sticky}difference between relative and absoulte is the first one move one the website repect to itself or container but absoulte moves respect to its parent
+to control position use {top/right/bottom/left}	note that if you didn't asign any position to absoulte it will move if  you add any margin to another element.... static doesn't move 					
+sticky 		like fixed position but under condition relative to your scroll when you come to a specific place depends on top right,left and bottom it will continue with you alonge the screen
+fixed		pined in some point and doesn't move under any condition even you scroll up or down
+static		doesn't effect with  top right,left and bottom
+transform: translate(number-x,number-y)		move  50% elemenet left and top referes to curruntly axis
+
+z-index:{number}				higher number will be above lower number .... must be position property for z-index to work
+..................
+list-style:none + padding-left:0 +margin:0	useful if you want a list of items that is appera in navegation bar if they consist of some elements in there you can ues unorder list too
+..................
+to format tabel or its cells or head cell write		table td{}     or     	table thead{}
+..................
+  display: flex;
+  justify-content: center;
+  align-items: center;
+...................
+pseudo class
+selector : state{
+}
+state {visited ,hover,checked,link,empty,foucs} 
+if you don't write any selector it will apply all selector that staisfy the state
+
+pseudo element
+.class :: state{
+}
+state{first-line,first-letter,selection,before,after}
+
+to active pseudo element must write content: " "; 
+you can modify it to display text from attribute when you add an attribute in HTML then put it in 
+content : attr(data-text); 
+another somting you can add counter from counter-increment : any name then put this name in content :counter(the name);
+you can also hidden the content and display when you hover item like that .one:hover::before{display block;} that is mean when you hover class one display content before
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

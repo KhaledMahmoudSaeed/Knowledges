@@ -58,7 +58,7 @@
 			  </textarea>
 			</section>
 			<section>
-				<p>here i can write every thing about speicifi subject </p>
+				<p>here i can write every thing about specific subject </p>
 				<hr/>
 				<ul>
 					<li> engineerings </li>

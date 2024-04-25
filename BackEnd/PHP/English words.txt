@@ -24,4 +24,7 @@ tedious				boring or tiring
 
 snippets			a small part, piece, or thing.
 
-dozens				a group of 12	
+dozens				a group of 12
+
+penetration			a movement into or through something or someone
+	

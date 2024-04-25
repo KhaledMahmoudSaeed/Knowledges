@@ -1,4 +1,4 @@
-PHP (Hypertext preprocessor) a scripting language that mainly used for web development however it can be used in AI or Mobile
+`PHP (Hypertext preprocessor) a scripting language that mainly used for web development however it can be used in AI or Mobile
 but it isn't a good choice ..... executed on a server not like HTML or CSS or javascript that means you can't easily view code of
 your site by just clicking on the site and open it by Atom or VS ..... can be hosted on any server and worked with any database
 In HTML you might want to create several pages for each person to show his data that called Static page that would be overwhelming boring
@@ -25,6 +25,10 @@ echo <<<'hgsd'
 hgsd;
 <pre> this tag print the lines as it like if you write bunch of echo lines it will be appered in several lines as you wrote 
 if you enter some escape characters it will be active within this tag
+============================================
+to get access to element in array  array[day] or array-> day when day is a index 
+==============================================
+
 .......................................................
 **Loosely  typed language // Reference are not pointer//compile time vs runtime**
 
@@ -115,12 +119,175 @@ echo '</pre>';
 to simplify  Anonymous fun we use Arrow fun look at the previous fun 
 array_map(fn($items) =>$nums*5,$nums)
 note that arrow fun dosen't want use keyword
-
-
-
-
-
+##########
+string
+strlen()			it is allwoable to write -ve between bracktes of string variable to get letters but form the end $str[-1] will get the last letter
+lcfirst() .x. ucfirst()		make first letter small of first word
+strtolower() .x. strtoupper()	make all letters small or capital
+ucwords().....ucwords(,)	make first letter for all words capital ... make first letter of each sentence capital ,it determine the sentence depend on character that you write after ,			 
+str_repeat()			repeat str for certian times	
+implode(seprator,string)	you have an array and want to spilt it to bunch of pieces depend on your seprator(what you want to seprate between words) not required 
+explode(seprator,string,limit)	you have words and want them in array must tell what is your seperator ... limit is optional because it determines how many words you want to be seperated if you write 3 words and specify limit to 1 it will return 2 valuse the first is first word second will be second and third word ... if you write -ve number that means you will reject bunch of words from the end of arry 
+str_shuffle()			randoms characters
+strrev()			reveres string
+trim(string,character)		ignore spaces or tab in string ... you can determine which character to be remove but it must to be at the end of stirng either right or left because trim removes from the end to in like barber
+rtrim() .x. ltrim		trime right only or left only
+chunk_split(string,len,end)	splits string into pieces depends on len and ends with your end character that you determine (optional)
+str_split(string,len)		same but output in array form
+strip_tags(,allowable tages)	remove all HTML tags unless you put any tage after, so it will passed and impelement
+strpos(string,vlaue,start,end)[case sensitve]	search for first existence value in your string.... start and end can be -ve number it works as strpos count from the end and then start searching
+strrpos(string,vlaue,start,end)[case sensitve]	the same but return the last existance of value
+stripos(string,vlaue,start,end)[ not case sensitve]
+strripos(string,vlaue,start,end)[ not case sensitve]
+substr_count(string,value,start,end) how many times value existence 
+parse_str(string,array)		get from you query like that comes from get method and put them in array
+quotemeta(string)		escaping all speical charater which user entered in search box or input field that may cause problem or be dangerous on your database
+str_pad(string,len,adding,flag)	put "adding" next to string until reach the length so that become all strings have same length.. you have 3 types of flage there are {STR_PAD_BOTH,,STR_PAD_LEFT,,STR_PAD_RIGHT} 
+strtr(string,form,to)		find and replace
+strtr(strign,array)		if there more than one letter need to be replace ..just make an array with these letter and what to be replaced
+str_replace(from,to,string,replace count variable)	the same as strtrbut it case sensitive
+str_ireplace(from,to,string,replace count variable)	not case sensitive
+substr_replace(string,repalaced string,start,len)	if you put len -ve it will add some characters depend on the number of length but from the end if you want to insert not replace put 0 in len place
+wordwrap(string,width,break_char,cutlen)		it will put word in the specifi width if the word is less than may another word comes with it in same block unless it will be lonly in line if you asign cut_long true it will cut any long text that cross the line
+ord() .x. chr() 					to&from ASCII code
+similar_text(string,string,$)				how many funs are similar... in variable stored % of simialr
+strstr(string,search,before_search[false])		search for a letter and print what after letter include the letter that is happen if the before_serach false if true will print want before only
+number_format(number,decimal,decimal char,intchar)	format number note that if you print  10_000_000 output will be 10000000
+...........................................................
+Array
+array_chunk(arry,number for each arry,preserve key)	to spilt arry to bunch of small arries with key start with 0 regardless what is the key  
+array_change_key_case(arry,case upper)			to change key case ... second field is optional once you write it you will turn all letters to upper case
+array_combine(array keys,array values)			combine two arrays
+array_count_values(array)				count of each element of arrya
+array_reverse(array,preserve{bool})			if true will arrange indexes of new reversed array otherwise save the indexes of each one					
+array_flip(array)					exchange key with value
+count(array,mode)					if mode =0 doesn't count element of multidimensional array but 1 do that and its array too
+in_array(search,array,type)				check if value is exist in an array ,if you put true in type will search for the same time
+array_key_exists(key,array)				check if key exists
+array_keys(array,value,type)				return array keys if you don't specify for which value or type it will return all keys in array
+array_values(array)					return values 
+array_pad(array,size,value)				to fill array with value until reaches size ,,if size is -ve will fill free spaces too but puts them before existance values ...if size is small then array items it will return orignal array
+array_product(array)					multiply all array element
+array_sum(array)					sum all array element	
+current/next/prev/reset/end(array)			move pointer along the array the default place for pointer is frist item
+array_merge(array,array)				merge two arrays if there is same key in the both of them second array will override the first ,,if you used numbering key fun will reset all these numbers to 0,1,2,3 and so one so no override will occur
+array_replace(array,replacement array)			the same like array_merge but if one element exists in second array and doesnot exist in first it will be created and unlike merge if you use numbering key it won't reset the number and work normaly
+array_rand(array,num)					pick one or more keys from array depens on the num you enter and it will return as array
+shuffle(array)						shuffle array
+array_shift(array)					shift an element off the beginning of array and reset indexes
+array_pop(array)					the same thing but bring the last element 
+array_push(array,value, , , , )				append element into end of array we used this fun to append more than element if you want to append one element use $arry[]="element";
+array_unshift(array,value, , , , )			add elements at the beginnig of array 	
+array_slice(array,start,len,preserve_key)		like chunk ..we can use -ve in start and we know this but  if you use -ve in len slice won't include these elements..if preserve key is true slice will have the same key of its slices
+array_splice(array,start,len,array)			the same but the changes apply in the main array ,,if you add an another array of elements or even one element it will include where the slice occurs
+sort(array,flag)					ascending order			
+rsort(array,flag)					descending order			
+asort(array,flag)					like sort but sort is to the value
+arsort(array,flag)					like rsort but sort is to the value
+ksort(array,flag)					like sort but sort is to the key
+krsort(array,flag)					like rsort but sort is to the key
+natsort(array,flag)					sort array to make logical
+array_map(callback fun,array,others arrays)		higher order fun... applies fun on one array if fun want one argeument if it wants more so it must to derive another arry
+array_filter(array,callbackfun,flag)			higher order fun...applies fun on value of array because flag is 0 if you want to apply fun on key put ARRAY_FILTER_USE_KEY instead of 0 if you want to apply fun on key and value use ARRAY_FILTER_USE_BOTH but in all conditions fun will return whole field key with value
+array_reduce(array,callbackfun,initial value)		higher order fun...applies fun on array and return single value
 ...............................................
+Math fun
+abs()
+rand(min,max)/mt_rand()
+mt-getrandmax()
+intdiv(,)						return always int
+fmod()							return always double ...so useful when you type 11.5%5 it will return 1.5 in fmod
+ceil()							Top		return doubel
+floor()							Bottom		return doubel
+round(num,precision,mode)				precision means how many decimal numbers you want ...mod controls roles of round to what will be rounded PHP_ROUND_HALF_(UP,DOWN,EVEN,OOD)	return doubel
+sqrt()
+min(),max()						you can derive array or just some numbers,,, if you derive two arrays it will compare all corresponds number when it finds array satisfy max or min will return it regardless the rest of numbers
+...............................................
+Filter
+filter_List()						valid filters in system or in language
+filter_id()						return  id of datatype like ASCII
+filter_var(variable,filter_id _or its name,options(flag))in php filter consider 1 ||"true"||"yes"||"on" all of them as true.......if you enter anything expect those valuse it will return flase even normal string so to prevent this write FILTER_NULL_ON_FAILURE this is a flag return null if you enter a  normal string 						
+names of  validate filters are ( FILTER_VALIDATE_(INT,BOOL,FLOAT,URL,EMAIL,IP,MAC)
+....sanitize filter....
+names(FILTER_SANITIZE_(EMAIL,INT,URL,FLOAT)
+
+flags that you used(NULL_ON_FAILUER,FLAG_PATH_REQUIRED,FLAG_QUERY_REQUIRED,FLAG_IPV4,FLAG_IPV6)
+options that you used (FILTER_SANITIZE_ALLOW_THOUSAND,FILTER_SANITIZE_ALLOW_FRACTION,min_range,maxrange)
+if you want use more than one flag or option put them into array ["flags"=> NULL_ON_FAILUER | FLAG_PATH_REQUIRED ,"options"=>["min_range"=>50 ,"max_range"=>100] 
+sanitize remove all unwanted chars like unless   in 
+email	 	+digits+ !#$%&'*+-=?^_`{|}~@.[]
+int		+ -
+float		+ - that is because sanitize consider int or float as string
+
+there is another fun like filter_var() called filter_input(type,value,filter,options and flags)
+types are (INPUT_GET,INPUT_POST,INPUT_COOKIE,INPUT_SERVER,INPUT_ENV)
+.......................................................................
+File system
+disk_total_space("C:")					to get whole space of disk in bytes
+disk_free_space("C:")					to get free space	in bytes
+file_exists("path")					check if file exists or not 
+file_size("path")					get size of file
+is_dir(name)						check if this directory or not
+mkdir("name","mode=permissions","recursive","context)	(you can search for numeric notation),in recursive you have two options true if you want php create all directories in path if there not exist 
+rmdir("name","context")					remove empty directory
+chmod("file","mode")					change mode or permissions  of files or directories
+fileperms("filename")					get file permissions in decimal mode so you have to convert it to octal	
+clearstatcache()					to clear cache after using fileperms() for example
+basename("path",suffix)					return trailing name component of path with out suffix if you wrote it 
+dirname("path","levels")				return parent directory's path with level 1 by default 
+realpath("path")					whole path
+pathinfo("path",flages)					return arry with some informations about file
+$handle=fopen("path","mode","include path","context") 	handel id name of common variable when using fopen ,,,you have 4 modes [r] to read [r+] to read and write [w] to write but truncate to 0 length and create file if not exist [w+] like [w] but read and write,,[a]write and pointer is at the end of file ,[a+] read and write ,[x]create and write,[x+]create and read and read [c] for all the previous features [c+] for read and wirte
+fgets("path","length")					get line from an open file by default or as you want in length
+fread("path","length")					read all file from an open file and its max must be determined  is length
+fclose($variable)					close file
+fwrite($variable,"string","Length")			write to an open file from beginning to the length that you entered
+feof($variable)						check if you reach end of file or not
+ftell($variable)					return current position of pionter
+rewind($variable)					rewind position of pointer
+fseek($variable,offset,whence)				to asign position of pointer respect to offset regardless of current position unless use whence (flages)SEEK_SET,,,SEEK_CUR,,SEEK_END	
+glob(pattern,flags)					find pathnames matching a pattern and return array
+rename("oldpath","newpath")				to rename or cut 
+copy("oldpath","newpath")				to copy
+unlink("path")						to delete
+opendir("path")						to open directory
+readdir("path")						to read from directory
+closefir("path")					to close directory
+file_get_contents("path",include-path,context,start,maxlen)	return data from file in string type depends on limitions that you mention
+file("path")						return data from file in array type	
+get_include_path()					where php include files
+file_put_contents("path",data,mode,context)		put data in file in general it overrides everything in file if file doesn't exist it will create one if you want to append data not override use FILE_APPEND) if you wrote echo before it will return how many bytes you wrote
+..........................................................................
+Date formate
+date_default_timezone_get()				timezone belongs to server
+date("Y-m-d H:i:s")					return date
+date_default_timezone_set("timezone")			set new timezone get the name from php documents
+$d=date_create(date,timezone_open(timezone))		to create date with specific data if you want it referes to now use now or "" 
+timezone_open("")					convert string to timezone to use in date_create
+date_formate($variable ," ")				put between " " what you want to display Y m d H i s
+checkdate(M ,D ,Y)					check validatiy of date
+date_format(date-object,formate)			there are many date format like Year[Y=>four digits,y=>two digits].. month[M=>3letter,m=>month number,F=>full name,t=>how many days in this month].. day[D=>3letters,d=>number of day,j=>day without leading zero,l=>full text,z=>day of 0-365,S=>st,rd,nth...] hour[a=>smal am/pm,A=>capital,g=>1-12,h=>01-12,G=>0-23,H=>00-23] min,sec,micro[i=>0-59,s=>00-59,u=>microseconds]
+date_interval_create_from_date_string()			to convert time or interval as string to time able to use in add,sub,modify	
+date_add(date_object,interval)				add date
+date_sub(date_object,interval)				substract
+date_modify(date_object,string)				modify write string like +1year or +10month
+time()							unix timestamp =>seconds since 01 jan 1970
+getdate()						array of all informations about current day
+date_parse("time stamp")				array of anaylsis of date 
+date_diff()						return array(object) diffrence between two dates
+strtotime(datetime,base)				convert string to date depend on base				
+.......................................................................
+Cookies
+setcookie(name,value,expire,path,domian,secure,HTTP_Only)if you write in path "/" it make cookie vaild in all domain
+$_COOKIE[""]						$_COOKIE is a super globel get array of all cookies in web 
+to delete cookie just change its time or put time() -1 only write -1 the same thing if you want to modify change what you want but keep name of the cookie unless you create anthor one
+you can also write name as array style[color] this in first setcookie and style[font] this in second one and so on
+session_start()						to have access into global variable that name session and can garp data
+session_unset()						to unset session from session but session still exist
+session_destroy()					delete whole session
+header(header,replace,response_code)			send raw http to client to manipulate info sent by web server before any output you can use to control cache or force download .....Location:        ,,,Refresh:5; url=
+
+.......................................................................
 Built In funcations
 echo " " ...echo ' '  = print ' ' ..... print " "  there is no diffrence between all of them
 gettype() 	to know which type this data belongs to as int or string whatever  .... gettype([121,442,51]) it will return arry just like gettype(arr(121,442,51))
