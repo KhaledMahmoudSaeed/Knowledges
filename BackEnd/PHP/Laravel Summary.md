@@ -122,7 +122,238 @@ The Http directory contains your controllers, middleware, and form requests. Alm
  The Jobs directory houses the queueable jobs for your application. Jobs may be queued by your application or run synchronously within the current request lifecycle. Jobs that run synchronously during the current request are sometimes referred to as "commands" since they are an implementation of the command pattern.
 
 **There are more directories like[Listeners - Mail - Models - Notifications - Policies - Providers -Rules ]**
+
+
+### Route
+The router allows you to register routes that respond to any HTTP verb:
+
+```php 
+Route::get($uri, $callback);
+Route::post($uri, $callback);
+Route::put($uri, $callback);
+Route::patch($uri, $callback);
+Route::delete($uri, $callback);
+Route::options($uri, $callback);
+```
+
+Sometimes you may need to register a route that responds to multiple HTTP verbs. You may do so using the ```match``` method. Or, you may even register a route that responds to all HTTP verbs using the ```any``` method:
+```php
+ Route::match(['get', 'post'], '/', function () {
+    // ...
+});
+ 
+Route::any('/', function () {
+    // ...
+});
+```
+
+When defining multiple routes that share the same URI, routes using the ```get```, ```post```, ```put```, ```patch```, ```delete```, and ```options``` methods should be defined before routes using the ```any```, ```match```, and ```redirect``` methods. This ensures the incoming request is matched with the correct route
+
+**Don't miss** 
+```php
+<form method="POST" action="/profile">
+    @csrf
+    ...
+</form>
+```
+ If you are defining a route that redirects to another URI, you may use the ```Route::redirect``` method. This method provides a convenient shortcut so that you do not have to define a full route or controller for performing a simple redirect:
+```php
+Route::redirect('/here', '/there');
+```
+By default, ```Route::redirect``` returns a ```302``` status code. You may customize the status code using the optional third parameter:
+```php
+Route::redirect('/here', '/there', 301);
+```
+Or, you may use the ```Route::permanentRedirect``` method to return a ```301``` status code:
+```php
+Route::permanentRedirect('/here', '/there');
+```
+**When using route parameters in redirect routes, the following parameters are reserved by Laravel and cannot be used: destination and status.**
+
+**View Route**
+If your route only needs to return a view, you may use the ```Route::view``` method. Like the ```redirect``` method, this method provides a simple shortcut so that you do not have to define a full route or controller. The ```view``` method accepts a URI as its first argument and a view name as its second argument. In addition, you may provide an array of data to pass to the view as an optional third argument:
+```php
+Route::view('/welcome', 'welcome');
+ 
+Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
+```
+**Route paramete**
+Sometimes you will need to capture segments of the URI within your route. For example, you may need to capture a user's ID from the URL. You may do so by defining route parameters:
+```php
+Route::get('/user/{id}', function (string $id) {
+    return 'User '.$id;
+});
+```
+You may define as many route parameters as required by your route:
+```php
+Route::get('/posts/{post}/comments/{comment}', function (string $postId, string $commentId) {
+    // ...
+});
+```
+**Route parameters are injected into route callbacks / controllers based on their order - the names of the route callback / controller arguments do not matter.**
+
+Occasionally you may need to specify a route parameter that may not always be present in the URI. You may do so by placing a ```?``` mark after the parameter name. Make sure to give the route's corresponding variable a default value:
+```php
+Route::get('/user/{name?}', function (?string $name = null) {
+    return $name;
+});
+ 
+Route::get('/user/{name?}', function (?string $name = 'John') {
+    return $name;
+});
+```
+
+**Regular Expression Constraints**
+You may constrain the format of your route parameters using the where method on a route instance. The where method accepts the name of the parameter and a regular expression defining how the parameter should be constrained:
+```php
+Route::get('/user/{name}', function (string $name) {
+    // ...
+})->where('name', '[A-Za-z]+');
+ 
+Route::get('/user/{id}', function (string $id) {
+    // ...
+})->where('id', '[0-9]+');
+ 
+Route::get('/user/{id}/{name}', function (string $id, string $name) {
+    // ...
+})->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
+```
+For convenience, some commonly used regular expression patterns have helper methods that allow you to quickly add pattern constraints to your routes:
+
+```php
+Route::get('/user/{id}/{name}', function (string $id, string $name) {
+    // ...
+})->whereNumber('id')->whereAlpha('name');
+ 
+Route::get('/user/{name}', function (string $name) {
+    // ...
+})->whereAlphaNumeric('name');
+ 
+Route::get('/user/{id}', function (string $id) {
+    // ...
+})->whereUuid('id');
+ 
+Route::get('/user/{id}', function (string $id) {
+    // ...
+})->whereUlid('id');
+ 
+Route::get('/category/{category}', function (string $category) {
+    // ...
+})->whereIn('category', ['movie', 'song', 'painting']);
+ 
+Route::get('/category/{category}', function (string $category) {
+    // ...
+})->whereIn('category', CategoryEnum::cases());
+```
+
+
+
+**Global Constraints**
+If you would like a route parameter to always be constrained by a given regular expression, you may use the pattern method. You should define these patterns in the boot method of your application's App\Providers\AppServiceProvider class:
+```php
+use Illuminate\Support\Facades\Route;
+ 
+/**
+ * Bootstrap any application services.
+ */
+public function boot(): void
+{
+    Route::pattern('id', '[0-9]+');
+}
+```
+Once the pattern has been defined, it is automatically applied to all routes using that parameter name:
+```php
+Route::get('/user/{id}', function (string $id) {
+    // Only executed if {id} is numeric...
+});
+```
+
+
+
+
+
+### Middleware
+Middleware provide a convenient mechanism for inspecting and filtering HTTP requests entering your application. For example, Laravel includes a middleware that verifies the user of your application is authenticated. If the user is not authenticated, the middleware will redirect the user to your application's login screen. However, if the user is authenticated, the middleware will allow the request to proceed further into the application.
+
+Additional middleware can be written to perform a variety of tasks besides authentication. For example, a logging middleware might log all incoming requests to your application. A variety of middleware are included in Laravel, including middleware for authentication and CSRF protection; however, all user-defined middleware are typically located in your application's app/Http/Middleware directory.
+### CSRF Protection
+Cross-site request forgeries are a type of malicious exploit whereby unauthorized commands are performed on behalf of an authenticated user. Thankfully, Laravel makes it easy to protect your application from cross-site request forgery (CSRF) attacks.
+### Controllers
+Instead of defining all of your request handling logic as closures in your route files, you may wish to organize this behavior using "controller" classes. Controllers can group related request handling logic into a single class. For example, a ```UserController``` class might handle all incoming requests related to users, **including** **showing**, **creating**, **updating**, and **deleting** users. By default, controllers are stored in the ```app/Http/Controllers``` directory.
+
+Once you have written a controller class and method, you may define a route to the controller method like so:
+```php
+use App\Http\Controllers\UserController;
+ 
+Route::get('/user/{id}', [UserController::class, 'show']);
+```
+
+
+**Single Action Controllers**
+If a controller action is particularly complex, you might find it convenient to dedicate an entire controller class to that single action. To accomplish this, you may define a single ```__invoke``` method within the controller:
+```php
+<?php
+ 
+namespace App\Http\Controllers;
+ 
+class ProvisionServer extends Controller
+{
+    /**
+     * Provision a new web server.
+     */
+    public function __invoke()
+    {
+        // ...
+    }
+}
+```
+When registering routes for single action controllers, you do not need to specify a controller method. Instead, you may simply pass the name of the controller to the router:
+```php
+use App\Http\Controllers\ProvisionServer;
+ 
+Route::post('/server', ProvisionServer::class);
+```
+
+This single route declaration creates multiple routes to handle a variety of actions on the resource. The generated controller will already have methods stubbed for each of these actions. Remember, you can always get a quick overview of your application's routes by running the route:list Artisan command.
+```php
+use App\Http\Controllers\PhotoController;
+ 
+Route::resource('photos', PhotoController::class);
+```
+
+**Actions Handled by Resource Controllers**
+
+GET  => [index - create - show - edit]
+POST => [store ]
+PUT/PATCH => [update ]
+DELETE => [destroy ]
+
+Typically, a 404 HTTP response will be generated if an implicitly bound resource model is not found. However, you may customize this behavior by calling the missing method when defining your resource route. The missing method accepts a closure that will be invoked if an implicitly bound model can not be found for any of the resource's routes:
+```php
+use App\Http\Controllers\PhotoController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+ 
+Route::resource('photos', PhotoController::class)
+        ->missing(function (Request $request) {
+            return Redirect::route('photos.index');
+        });
+```
+
+### Request
+Laravel's Illuminate\Http\Request class provides an object-oriented way to interact with the current HTTP request being handled by your application as well as retrieve the input, cookies, and files that were submitted with the request.
+
+**Methods**
+- path()      [returns the request's path information]
+- is()        [allows you to verify that the incoming request path matches a given pattern. You may use the * character as a wildcard when utilizing this method:if($request->is('admin/*')) {}]
+- routeIs ()  [ you may determine if the incoming request has matched a named route:if ($request->routeIs('admin.*')) {}]
+- url()/fullUrl()       [To retrieve the full URL for the incoming request ]
+- host()/httpHost()/schemeAndHttpHost()   [retrieve the "host" of the incoming request]
+- method()          [return the HTTP verb for the request]
+- isMethod ()       [to verify that the HTTP verb matches a given string] 
 ### Commands
+npm run dev         [ to run app for devlopment]
+npm run build         [ to run app for production]
 - **Configuration**     Laravel can display an overview of your application's configuration, drivers, and environment via the ```about``` Artisan command.
   - php artisan about
   - php artisan about --only=environment
@@ -149,7 +380,13 @@ The Http directory contains your controllers, middleware, and form requests. Alm
   - php artisan event:generate and php artisan make:event [to create  Events Directory which may be used to alert other parts of your application that a given action has occurred, providing a great deal of flexibility and decoupling.]
   - php artisan make:exception             [to create Exceptions Directory which contains all of the custom exceptions for your application]
   - php artisan make:job                   [to make Job directory ]
-
+- **Route**
+  - php artisan route:list                 [provide an overview of all of the routes that are defined by your application]
+  - php artisan route:list -v              [to view middel ware  and if you add more v it will Expand middleware groups]
+  - php artisan route:list --path=api      [You may also instruct Laravel to only show routes that begin with a given URI]
+- **Controllers**'
+  - php artisan make:controller ProvisionServer --invokable     [generate an invokable controller]
+  - php artisan make:controller PhotoController --resource      [create a controller that handel CRUD operation]
 
 
 
